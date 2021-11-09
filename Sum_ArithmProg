@@ -1,0 +1,25 @@
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        int n = 0;
+        while (true)
+        {
+            Console.WriteLine("Введите число n :");
+            var str = Console.ReadLine();
+            if (int.TryParse(str, out n))
+                break;
+            else Console.WriteLine("ДАННЫЕ НЕ КОРРЕКТНЫ ! ! ! ");
+        }
+
+            int sum = 0;
+            for (int i = 1; i <= n; i++)
+            {
+                sum += i;
+            }
+            Console.WriteLine("Сумма первых {0} членов арифметичсеcкой прогрессии равна {1} ", n, sum);
+        Console.ReadLine();
+    }
+}
