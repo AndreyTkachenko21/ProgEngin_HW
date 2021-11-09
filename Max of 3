@@ -1,0 +1,77 @@
+using System;
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            
+            double a = 0;
+            while (true)
+            {
+                // Выводим текст
+                Console.WriteLine("Введите число A :");
+                // Вводим число
+                var str = Console.ReadLine();
+                // Пытаемся распарсить
+                if (double.TryParse(str, out a))
+                    break; // Если все ок, то выходим из цикла
+                else Console.WriteLine("ДАННЫЕ НЕ КОРРЕКТНЫ ! ! ! ");
+            }
+            
+            double b = 0;
+            while (true)
+            {
+                // Выводим текст
+                Console.WriteLine("Введите число B :");
+                // Вводим число
+                var str = Console.ReadLine();
+                // Пытаемся распарсить
+                if (double.TryParse(str, out b))
+                    break; // Если все ок, то выходим из цикла
+                else Console.WriteLine("ДАННЫЕ НЕ КОРРЕКТНЫ ! ! ! ");
+            }
+
+            double c = 0;
+            while (true)
+            {
+                // Выводим текст
+                Console.WriteLine("Введите число C :");
+                // Вводим число
+                var str = Console.ReadLine();
+                // Пытаемся распарсить
+                if (double.TryParse(str, out c))
+                    break; // Если все ок, то выходим из цикла
+                else Console.WriteLine("ДАННЫЕ НЕ КОРРЕКТНЫ ! ! ! ");
+            }
+
+            if ((a == b) && (b == c))
+            {
+                Console.WriteLine($"Числа между собой равны, Max = {a}");
+            }
+            if ((a > b) && (a > c))
+            {
+                Console.WriteLine($"Максимальное число A = {a}");
+            }
+            if ((b > a) && (b > c))
+            {
+                Console.WriteLine($"Максимальное число B = {b}");
+            }
+            if ((c > b) && (c > a))
+            {
+                Console.WriteLine($"Максимальное число C = {c}");
+            }
+            if ((a == b) && (b > c))
+            {
+                Console.WriteLine($"Числа А и B равны и максимальны, Max = {a}");
+            }
+            if ((c == b) && (b > a))
+            {
+                Console.WriteLine($"Числа B и C равны и максимальны, Max = {c}");
+            }
+            if ((a == c) && (a > b))
+            {
+                Console.WriteLine($"Числа А и C равны и максимальны, Max= {c}");
+            }
+            Console.ReadLine();
+        }
+    }
