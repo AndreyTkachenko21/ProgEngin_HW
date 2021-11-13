@@ -1,0 +1,165 @@
+using System;
+
+namespace Tic_tac_toe1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int counterx = 0;
+            int counterO = 0;
+            string winner = "";
+            bool flag = true;
+            do
+            {
+                string[] el = new string[9] {"1","2","3","4","5","6","7","8","9" };
+                string players;
+                while (true)
+                {
+                    Console.WriteLine("Выберите режим игры\nДля игры с компьютером введите ' 1 '\nДля игры вдвоем введите ' 2' ");
+                    players = Console.ReadLine();
+                    if ((players=="1")||(players=="2"))
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Ошибка!!!");
+                    }
+                }
+                Console.Clear();
+                do
+                {
+                    for (int i = 0; i < 7; i += 3)
+                    {
+                        if (i == 0)
+                            Console.WriteLine("  -------------");
+                        Console.Write($"  | {el[i]} | {el[i + 1]} | {el[i + 2]} | \n  -------------\n");
+                    }
+                    //# -------------------------------------------------------                                  || ход игрока X
+                    int n;
+                    
+                    while (true)
+                    {
+                        Console.WriteLine("Ход Х \nВыберете клетку:");
+                        var str = Console.ReadLine();
+                        if (int.TryParse(str, out n)  )
+                        {
+                            if ((n < 10) && (n > 0))
+                            {
+                                if ((el[n - 1] != "X") && (el[n - 1] != "O"))
+                                {
+                                    el[n - 1] = "X";
+                                    break;
+                                }
+                                else
+                                    Console.WriteLine("Ошибка!!!Клетка занята!");
+                            }
+                           
+                        }
+                        else
+                            Console.WriteLine("Ошибка!!!Не корректные данные");
+                    }
+                    if (((el[0] == el[1])&& (el[0] == el[2])&& (el[0] == "X")) ||((el[3] == el[4]) && (el[3] == el[5]) && (el[3] == "X")) ||((el[6] == el[7]) && (el[7] == el[8]) && (el[6] == "X")) ||((el[0] == el[4]) && (el[4] == el[8]) && (el[0] == "X")) ||((el[2] == el[4]) && (el[4] == el[6]) && (el[2] == "X")) ||((el[0] == el[3]) && (el[0] == el[6]) && (el[0] == "X")) ||((el[1] == el[4]) && (el[4] == el[7]) && (el[1] == "X")) ||((el[2] == el[5]) && (el[5] == el[8]) && (el[2] == "X")))
+                    {
+                        winner = "X победили";
+                        counterx++;
+                        break;
+                    }
+                    else
+                    {
+                       if(!((el[0]=="1")|| (el[1] == "2") || (el[2] == "3") || (el[3] == "4") || (el[4] == "5") && (el[5] == "6") || (el[6] == "7") || (el[7] == "8") || (el[8] == "9")))
+                        {
+                            winner = "Ничья";
+                            break;
+                        }
+                        
+                    }
+                    Console.Clear();
+                    for (int i = 0; i < 7; i += 3)
+                    {
+                        if (i == 0)
+                            Console.WriteLine("  -------------");
+                        Console.Write($"  | {el[i]} | {el[i + 1]} | {el[i + 2]} | \n  -------------\n");
+                    }
+                    if (players == "2")
+                    {
+                        while (true)
+                        {
+                            Console.WriteLine("Ход O \nВыберете клетку:");
+                            var str = Console.ReadLine();
+                            if (int.TryParse(str, out n) && (n < 10) && (n > 0))
+                            {
+                                if ((el[n - 1] != "X") && (el[n - 1] != "O"))
+                                {
+                                    el[n - 1] = "O";
+                                    break;
+                                }
+                                else
+                                    Console.WriteLine("Ошибка!!!Клетка занята!");
+                            }
+                            else
+                                Console.WriteLine("Ошибка!!!Не корректные данные");
+                        }
+                    }
+                    else
+                    {
+                        while (true)
+                        {
+                            Random rnd = new Random();
+                            n = rnd.Next(0, 8);
+                            if ((el[n] != "X") && (el[n] != "O"))
+                            {
+                                el[n] = "O";
+                                break;
+                            }
+                        }
+                    }
+                    if (((el[0] == el[1]) && (el[0] == el[2]) && (el[0] == "O")) || ((el[3] == el[4]) && (el[3] == el[5]) && (el[3] == "O")) || ((el[6] == el[7]) && (el[7] == el[8]) && (el[6] == "O")) || ((el[0] == el[4]) && (el[4] == el[8]) && (el[0] == "O")) || ((el[2] == el[4]) && (el[4] == el[6]) && (el[2] == "O")) || ((el[0] == el[3]) && (el[0] == el[6]) && (el[0] == "O")) || ((el[1] == el[4]) && (el[4] == el[7]) && (el[1] == "O")) || ((el[2] == el[5]) && (el[5] == el[8]) && (el[2] == "O")))
+                    {
+                        winner = "O победили";
+                        counterx++;
+                        break;
+                    }
+                    else
+                    {
+                        if (!((el[0] == "1") || (el[1] == "2") || (el[2] == "3") || (el[3] == "4") || (el[4] == "5") && (el[5] == "6") || (el[6] == "7") || (el[7] == "8") || (el[8] == "9")))
+                        {
+                            winner = "Ничья";
+                            break;
+                        }
+
+                    }
+                    for (int i = 0; i < 7; i += 3)
+                    {
+                        if (i == 0)
+                            Console.WriteLine("  -------------");
+                        Console.Write($"  | {el[i]} | {el[i + 1]} | {el[i + 2]} | \n  -------------\n");
+                    }
+                    Console.Clear();
+
+                } while (true);
+                for (int i = 0; i < 7; i += 3)
+                {
+                    if (i == 0)
+                        Console.WriteLine("  -------------");
+                    Console.Write($"  | {el[i]} | {el[i + 1]} | {el[i + 2]} | \n  -------------\n");
+                }
+                Console.WriteLine(winner);
+                Console.WriteLine($"\nКоличестко побед:\nX : {counterx}\nO : {counterO}");
+                Console.WriteLine("\nДля выхода нажмите 'ESC'\nДля новой игры нажмите'ENTER'");
+                ConsoleKey consoleKey = Console.ReadKey().Key;
+                switch (consoleKey)
+                {
+                    
+                    case ConsoleKey.Escape:
+                        flag = false;
+                        break;                    
+                    default:
+                        break;
+                }
+            } while (flag);
+
+        }
+    }
+}
